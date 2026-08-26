@@ -106,13 +106,11 @@ struct NearbyDevice: Identifiable, Equatable {
     var seenDuration: TimeInterval { lastSeen.timeIntervalSince(firstSeen) }
 
     var proximityLabel: String {
-        switch smoothedRSSI {
-        case -55...: "Sehr nah"
-        case -67 ..< -55: "Nah"
-        case -78 ..< -67: "Mittel"
-        case -90 ..< -78: "Weiter weg"
-        default: "Sehr schwach"
-        }
+        if smoothedRSSI >= -55 { return "Sehr nah" }
+        if smoothedRSSI >= -67 { return "Nah" }
+        if smoothedRSSI >= -78 { return "Mittel" }
+        if smoothedRSSI >= -90 { return "Weiter weg" }
+        return "Sehr schwach"
     }
 
     var estimatedDistance: Double? {

@@ -18,7 +18,8 @@ struct HistoryView: View {
                     Section("Letzte Sichtungen") {
                         ForEach(scanner.history.records.prefix(200)) { record in
                             HStack {
-                                Image(systemName: record.kind.symbol).foregroundStyle(record.risk == .normal ? .secondary : .orange)
+                                Image(systemName: record.kind.symbol)
+                                    .foregroundStyle(record.risk == .normal ? Color.secondary : Color.orange)
                                 VStack(alignment: .leading, spacing: 3) {
                                     Text(record.name).font(.headline)
                                     Text([record.network, "\(record.rssi) dBm"].compactMap { $0 }.joined(separator: " • "))
