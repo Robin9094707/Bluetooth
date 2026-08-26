@@ -1,0 +1,7 @@
+.DS_Store
+*.xcodeproj
+DerivedData/
+.github-derived/
+Payload/
+*.ipa
+*.log
